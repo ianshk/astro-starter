@@ -1,46 +1,100 @@
-# Astro Starter Kit: Basics
+# Astro v7 Starter
 
-```sh
-npm create astro@latest -- --template basics
+A modern static site starter built with [Astro](https://astro.build), React islands, Tailwind CSS v4, and [shadcn/ui](https://ui.shadcn.com) components. Ships zero JavaScript by default — only interactive islands hydrate on the client.
+
+![Astro Starter Kit](./screenshot.png)
+
+## Tech Stack
+
+- **Astro 7** — static site generator with island architecture
+- **React 19** — for interactive client-side components
+- **Tailwind CSS v4** — utility-first CSS with the new Vite plugin
+- **shadcn/ui** — accessible component library built on Base UI primitives
+- **Lucide React** — icon set
+- **Geist** — variable font via Fontsource
+- **@astrojs/sitemap** — automatic sitemap generation
+- **Prettier** — code formatting with Astro and Tailwind plugins
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js >= 22.12.0
+
+### Install
+
+```bash
+npm install
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+### Development
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+```bash
+npm run dev
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+Opens at [http://localhost:4321](http://localhost:4321).
 
-## 🧞 Commands
+### Build
 
-All commands are run from the root of the project, from a terminal:
+```bash
+npm run build
+```
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+Output goes to `dist/`. Preview the production build with:
 
-## 👀 Want to learn more?
+```bash
+npm run preview
+```
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+### Format
+
+```bash
+npm run format
+```
+
+## Project Structure
+
+```
+src/
+├── components/
+│   ├── ui/            # shadcn/ui components (button, card, badge, etc.)
+│   ├── Counter.tsx     # Interactive counter (React island)
+│   ├── FeatureTabs.tsx # Interactive feature explorer (React island)
+│   ├── Head.astro      # SEO meta tags, OG, Twitter cards, JSON-LD
+│   └── StaticSections.tsx  # Server-rendered Hero, TechStack, Footer
+├── layouts/
+│   └── Layout.astro    # Base HTML layout with SEO props
+├── pages/
+│   ├── index.astro     # Home page
+│   └── robots.txt.ts   # Dynamic robots.txt
+└── styles/
+    └── global.css       # Tailwind + shadcn theme variables
+```
+
+## Adding Components
+
+```bash
+npx shadcn@latest add <component>
+```
+
+Browse available components:
+
+```bash
+npx shadcn@latest search
+```
+
+## SEO
+
+The project includes full SEO infrastructure out of the box:
+
+- **Head.astro** — reusable component for meta, OG, Twitter cards, canonical URLs, and JSON-LD
+- **Sitemap** — auto-generated via `@astrojs/sitemap`
+- **robots.txt** — dynamically generated with sitemap reference
+- **Trailing slashes** — enforced via `trailingSlash: 'always'`
+
+Update `site` in `astro.config.mjs` to your production domain before deploying.
+
+## License
+
+MIT

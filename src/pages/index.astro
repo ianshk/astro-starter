@@ -1,11 +1,36 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import { Hero, TechStack, Footer } from '@/components/StaticSections';
+import { Counter } from '@/components/Counter';
+import { FeatureTabs } from '@/components/FeatureTabs';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') || '';
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Astro Starter Kit',
+  url: siteUrl,
+  description:
+    'A modern Astro starter with React islands, Tailwind CSS v4, and shadcn/ui components.',
+};
 ---
 
-<Layout>
-	<Welcome />
+<Layout
+  title="Astro Starter Kit — React Islands + shadcn/ui"
+  description="A modern static site starter with Astro, React islands, Tailwind CSS v4, and shadcn/ui components. Fast by default, fully type-safe."
+  siteName="Astro Starter Kit"
+  structuredData={structuredData}
+>
+  <main class="mx-auto flex min-h-screen max-w-4xl flex-col gap-8 px-6 py-12">
+    <Hero />
+
+    <section class="grid gap-6 sm:grid-cols-2">
+      <Counter client:only="react" />
+      <FeatureTabs client:only="react" />
+    </section>
+
+    <TechStack />
+    <Footer />
+  </main>
 </Layout>
