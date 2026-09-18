@@ -66,28 +66,24 @@ const fullOgImage = ogImage.startsWith('http')
 
 <!-- Article Metadata -->
 {author && <meta name="author" content={author} />}
-{
-  publishDate && (
-    <meta property="article:published_time" content={publishDate} />
-  )
-}
-{
-  modifiedDate && (
-    <meta property="article:modified_time" content={modifiedDate} />
-  )
-}
-{tags.map((tag) => <meta property="article:tag" content={tag} />)}
+{publishDate && (
+  <meta property="article:published_time" content={publishDate} />
+)}
+{modifiedDate && (
+  <meta property="article:modified_time" content={modifiedDate} />
+)}
+{tags.map((tag) => (
+  <meta property="article:tag" content={tag} />
+))}
 
 <!-- Favicon -->
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="icon" href="/favicon.ico" />
 
 <!-- Structured Data -->
-{
-  structuredData && (
-    <script
-      type="application/ld+json"
-      set:html={JSON.stringify(structuredData)}
-    />
-  )
-}
+{structuredData && (
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify(structuredData)}
+  ></script>
+)}
